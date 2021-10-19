@@ -14,7 +14,7 @@ int main()
 	journal->SetNumber(1)->SetTitle("journal");
 	
 	Newspaper* newspaper = new Newspaper;
-	newspaper->SetDate("date")->SetTitle("newsPaper");
+	newspaper->SetDate("date")->SetTitle("newspaper");
 	
 	//std::cout << book->toString()<<"\n";
 
