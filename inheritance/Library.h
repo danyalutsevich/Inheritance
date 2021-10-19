@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 class Literature {
 private:
@@ -15,7 +16,7 @@ public:
 	std::string GetTitle() {
 		return title;
 	}
-
+	virtual std::string toString() = 0;
 };
 
 class Book :public Literature {
@@ -32,6 +33,14 @@ public:
 	std::string GetAuthor() {
 
 		return author;
+	}
+
+	std::string toString() {
+
+		std::string res;
+		res += GetTitle() + " " + GetAuthor();
+
+		return res;
 	}
 
 };
@@ -52,14 +61,21 @@ public:
 		return number;
 	}
 
+	std::string toString() {
+		std::string res;
+		res += GetTitle() + " (" + std::to_string(number) + ")";
+		return res;
+
+	}
+
 };
 
-class NewsPaper : public Literature {
+class Newspaper : public Literature {
 
 private:
 	std::string date;
 public:
-	NewsPaper* SetDate(std::string date) {
+	Newspaper* SetDate(std::string date) {
 
 		this->date = date;
 		return this;
@@ -68,6 +84,13 @@ public:
 	std::string GetDate() {
 
 		return date;
+	}
+	std::string toString() {
+
+		std::string res;
+		res += GetTitle() + " " + GetDate();
+		return res;
+
 	}
 
 };
