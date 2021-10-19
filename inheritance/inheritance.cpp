@@ -15,27 +15,25 @@ int main()
 	
 	Newspaper* newspaper = new Newspaper;
 	newspaper->SetDate("date")->SetTitle("newspaper");
-	
-	//std::cout << book->toString()<<"\n";
 
-	//std::cout << journal->toString()<<"\n";
+	Booklet* booklet = new Booklet;
+	booklet->SetDate("date")->SetAuthor("author")->SetTitle("booklet");
 
-	//std::cout << newsPaper->toString() << "\n";
-
-	Literature** funds = new Literature*[3];
+	Literature** funds = new Literature*[4];
 
 	funds[0] = book;
 	funds[1] = journal;
 	funds[2] = newspaper;
-
-	for (int i = 0; i < 3; i++) {
+	funds[3] = booklet;
+	
+	for (int i = 0; i < 4; i++) {
 
 		std::cout << funds[i]->toString() << "\n";
 
 	}
 
 
-
+	delete booklet;
 	delete newspaper;
 	delete journal;
 	delete book;

@@ -12,7 +12,7 @@ public:
 		this->title = title;
 		return this;
 	}
-	
+
 	std::string GetTitle() {
 		return title;
 	}
@@ -35,7 +35,7 @@ public:
 		return author;
 	}
 
-	std::string toString() {
+	virtual std::string toString() {
 
 		std::string res;
 		res += GetTitle() + " " + GetAuthor();
@@ -89,6 +89,33 @@ public:
 
 		std::string res;
 		res += GetTitle() + " " + GetDate();
+		return res;
+
+	}
+
+};
+
+class Booklet : public Book {
+
+private:
+	std::string date;
+public:
+
+	Booklet* SetDate(std::string date) {
+
+		this->date = date;
+		return this;
+	}
+
+	std::string GetDate() {
+
+		return date;
+	}
+
+	std::string toString() {
+
+		std::string res;
+		res += GetAuthor() + " " + GetTitle() + " " + GetDate();
 		return res;
 
 	}
