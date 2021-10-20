@@ -39,7 +39,7 @@ int main()
 
 	}
 
-
+	delete mag;
 	delete booklet;
 	delete newspaper;
 	delete journal;

@@ -8,6 +8,11 @@ private:
 	std::string title;
 
 public:
+	Literature() : title{ "" } {
+
+		std::cout << "Literature constructor " << this << "\n";
+	}
+
 	Literature* SetTitle(std::string title) {
 		this->title = title;
 		return this;
@@ -18,6 +23,12 @@ public:
 	}
 
 	virtual std::string toString() = 0;
+
+	~Literature() {
+
+		std::cout << "Literature destructor " << this << "\n";
+	}
+
 };
 
 class Book :public Literature {
@@ -25,6 +36,13 @@ class Book :public Literature {
 private:
 	std::string author;
 public:
+
+	Book() :author{ "" } {
+
+		std::cout << "Book constructor " << this << "\n";
+
+	}
+
 	Book* SetAuthor(std::string author) {
 
 		this->author = author;
@@ -44,6 +62,11 @@ public:
 		return res;
 	}
 
+	~Book() {
+
+		std::cout << "Book destructor " << this << "\n";
+	}
+
 };
 
 class Journal : public Literature {
@@ -51,6 +74,10 @@ class Journal : public Literature {
 private:
 	int number;
 public:
+	Journal() :number{ 0 } {
+		std::cout << "Journal constructor " << this << "\n";
+	}
+
 	Journal* SetNumber(int number) {
 
 		this->number = number;
@@ -68,6 +95,10 @@ public:
 		return res;
 
 	}
+	~Journal() {
+
+		std::cout << "Journal destructor " << this << "\n";
+	}
 
 };
 
@@ -76,6 +107,10 @@ class Newspaper : public Literature {
 private:
 	std::string date;
 public:
+	Newspaper() :date{ "" } {
+		std::cout << "Newspaper constructor " << this << "\n";
+	}
+
 	Newspaper* SetDate(std::string date) {
 
 		this->date = date;
@@ -93,7 +128,10 @@ public:
 		return res;
 
 	}
+	~Newspaper() {
 
+		std::cout << "Newspaper destructor " << this << "\n";
+	}
 };
 
 class Booklet : public Book {
@@ -101,6 +139,10 @@ class Booklet : public Book {
 private:
 	std::string date;
 public:
+	Booklet() :date{ "" } {
+
+		std::cout << "Booklet constructor " << this << "\n";
+	}
 
 	Booklet* SetDate(std::string date) {
 
@@ -120,6 +162,10 @@ public:
 		return res;
 
 	}
+	~Booklet() {
+
+		std::cout << "Booklet destructor " << this << "\n";
+	}
 
 };
 
@@ -129,11 +175,17 @@ class Magazine : public Journal {
 private:
 	int year;
 public:
+
+	Magazine() :year{ 0 } {
+		std::cout << "Magazine constructor " << this << "\n";
+	}
+
 	Magazine* SetYear(int year) {
 
 		this->year = year;
 		return this;
 	}
+
 	int GetYear() {
 		return year;
 	}
@@ -141,7 +193,11 @@ public:
 	std::string toString() {
 
 		return Journal::toString() + " " + std::to_string(year);
-		
+	}
+
+	~Magazine() {
+
+		std::cout << "Magazine destructor " << this << "\n";
 	}
 
 };
