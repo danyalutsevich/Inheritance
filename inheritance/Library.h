@@ -16,6 +16,7 @@ public:
 	std::string GetTitle() {
 		return title;
 	}
+
 	virtual std::string toString() = 0;
 };
 
@@ -118,6 +119,29 @@ public:
 		res += GetAuthor() + " " + GetTitle() + " " + GetDate();
 		return res;
 
+	}
+
+};
+
+
+class Magazine : public Journal {
+
+private:
+	int year;
+public:
+	Magazine* SetYear(int year) {
+
+		this->year = year;
+		return this;
+	}
+	int GetYear() {
+		return year;
+	}
+
+	std::string toString() {
+
+		return Journal::toString() + " " + std::to_string(year);
+		
 	}
 
 };

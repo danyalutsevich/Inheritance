@@ -19,14 +19,21 @@ int main()
 	Booklet* booklet = new Booklet;
 	booklet->SetDate("date")->SetAuthor("author")->SetTitle("booklet");
 
-	Literature** funds = new Literature*[4];
+	Magazine* mag = new Magazine;
+	mag->SetYear(2077)->SetNumber(0)->SetTitle("magazine");
+
+
+
+	Literature** funds = new Literature*[5];
 
 	funds[0] = book;
 	funds[1] = journal;
 	funds[2] = newspaper;
 	funds[3] = booklet;
-	
-	for (int i = 0; i < 4; i++) {
+	funds[4] = mag;
+
+
+	for (int i = 0; i < 5; i++) {
 
 		std::cout << funds[i]->toString() << "\n";
 
@@ -37,6 +44,7 @@ int main()
 	delete newspaper;
 	delete journal;
 	delete book;
+
 	return 0;
 
 }
