@@ -22,16 +22,24 @@ int main()
 	Magazine* mag = new Magazine;
 	mag->SetYear(2077)->SetNumber(0)->SetTitle("magazine");
 
-	Literature** funds = new Literature*[5];
+	Magazine* mag1 = new Magazine;
+	mag1->SetYear(2078)->SetNumber(1)->SetTitle("magazine one");
+
+	Magazine* mag2 = new Magazine;
+	mag2->SetYear(2079)->SetNumber(2)->SetTitle("magazine two");
+
+	Literature** funds = new Literature*[7];
 
 	funds[0] = book;
-	funds[1] = journal;
-	funds[2] = newspaper;
-	funds[3] = booklet;
-	funds[4] = mag;
+	funds[1] = mag;
+	funds[2] = journal;
+	funds[3] = mag1;
+	funds[4] = newspaper;
+	funds[5] = mag2;
+	funds[6] = booklet;
 
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 
 		std::cout << funds[i]->toString() << "\n";
 
@@ -39,7 +47,7 @@ int main()
 
 	std::cout << "\n\n";
 
-	for (int i = 0; i < 5; i++) {
+	/*for (int i = 0; i < 7; i++) {
 		
 		Book* ptr = dynamic_cast<Book*>(funds[i]);
 
@@ -49,7 +57,7 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 
 		Newspaper* ptr = dynamic_cast<Newspaper*>(funds[i]);
 
@@ -59,7 +67,7 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 
 		Journal* ptr = dynamic_cast<Journal*>(funds[i]);
 
@@ -67,9 +75,9 @@ int main()
 			std::cout << ptr->GetNumber() << " " << ptr->GetTitle() << "\n";
 
 		}
-	}
+	}*/
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 
 		Childish* ptr = dynamic_cast<Childish*>(funds[i]);
 
