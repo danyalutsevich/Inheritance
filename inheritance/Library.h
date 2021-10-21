@@ -10,7 +10,7 @@ private:
 public:
 	Literature() : title{ "" } {
 
-		std::cout << "Literature constructor " << this << "\n";
+		//std::cout << "Literature constructor " << this << "\n";
 	}
 
 	Literature* SetTitle(std::string title) {
@@ -26,7 +26,7 @@ public:
 
 	~Literature() {
 
-		std::cout << "Literature destructor " << this << "\n";
+		//std::cout << "Literature destructor " << this << "\n";
 	}
 
 };
@@ -39,7 +39,7 @@ public:
 
 	Book() :author{ "" } {
 
-		std::cout << "Book constructor " << this << "\n";
+		//std::cout << "Book constructor " << this << "\n";
 
 	}
 
@@ -64,7 +64,7 @@ public:
 
 	~Book() {
 
-		std::cout << "Book destructor " << this << "\n";
+		//std::cout << "Book destructor " << this << "\n";
 	}
 
 };
@@ -75,7 +75,7 @@ private:
 	int number;
 public:
 	Journal() :number{ 0 } {
-		std::cout << "Journal constructor " << this << "\n";
+		//std::cout << "Journal constructor " << this << "\n";
 	}
 
 	Journal* SetNumber(int number) {
@@ -97,7 +97,7 @@ public:
 	}
 	~Journal() {
 
-		std::cout << "Journal destructor " << this << "\n";
+		//std::cout << "Journal destructor " << this << "\n";
 	}
 
 };
@@ -108,7 +108,7 @@ private:
 	std::string date;
 public:
 	Newspaper() :date{ "" } {
-		std::cout << "Newspaper constructor " << this << "\n";
+		//std::cout << "Newspaper constructor " << this << "\n";
 	}
 
 	Newspaper* SetDate(std::string date) {
@@ -130,7 +130,7 @@ public:
 	}
 	~Newspaper() {
 
-		std::cout << "Newspaper destructor " << this << "\n";
+		//std::cout << "Newspaper destructor " << this << "\n";
 	}
 };
 
@@ -141,7 +141,7 @@ private:
 public:
 	Booklet() :date{ "" } {
 
-		std::cout << "Booklet constructor " << this << "\n";
+		//std::cout << "Booklet constructor " << this << "\n";
 	}
 
 	Booklet* SetDate(std::string date) {
@@ -164,20 +164,27 @@ public:
 	}
 	~Booklet() {
 
-		std::cout << "Booklet destructor " << this << "\n";
+		//std::cout << "Booklet destructor " << this << "\n";
 	}
 
 };
 
+class Childish {
 
-class Magazine : public Journal {
+private:
+
+public:
+
+};
+
+class Magazine : public Journal, public Childish  {
 
 private:
 	int year;
 public:
 
 	Magazine() :year{ 0 } {
-		std::cout << "Magazine constructor " << this << "\n";
+		//std::cout << "Magazine constructor " << this << "\n";
 	}
 
 	Magazine* SetYear(int year) {
@@ -197,7 +204,7 @@ public:
 
 	~Magazine() {
 
-		std::cout << "Magazine destructor " << this << "\n";
+	//	std::cout << "Magazine destructor " << this << "\n";
 	}
 
 };
