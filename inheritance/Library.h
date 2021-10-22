@@ -177,7 +177,7 @@ public:
 
 };
 
-class Magazine : public Journal, public Childish  {
+class Magazine : public Journal, public Childish {
 
 private:
 	int year;

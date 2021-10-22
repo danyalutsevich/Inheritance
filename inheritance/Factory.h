@@ -42,13 +42,13 @@ public:
 
 	Literature* fromString(std::string str) {
 
-		
+
 		//splitt for lines
 		auto arr = splitString(str, '\n');
 
 		size_t lines = parts;
 
-		if (lines < 2) {
+		if (lines < 2 || lines>3) {
 
 			return NULL;
 		}
