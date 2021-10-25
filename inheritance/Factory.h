@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Library.h"
+#include <fstream>
 
 class LitFactory {
 
@@ -55,16 +56,8 @@ public:
 
 		//split :
 
-
-
-
-
-
 		auto pair1 = splitString(arr[0], ':');
 		auto pair2 = splitString(arr[1], ':');
-
-
-
 
 
 		if (lines == 2) {
@@ -105,13 +98,32 @@ public:
 			}
 		}
 
-
-
-
 		return NULL;
 
 	}
 
+	Literature* fromFile(std::string filename) {
+	
+		std::ifstream input;
+		input.open(filename);
+		char chunk[100];
+		std::string str;
 
+		while (!input.eof())
+		{
+			input.read(chunk, 5);
+			std::streamsize n = input.gcount();
+			chunk[n] = 0;
+
+
+			str += chunk;
+		}
+
+		input.close();
+
+		return fromString(str);
+
+	
+	}
 
 };

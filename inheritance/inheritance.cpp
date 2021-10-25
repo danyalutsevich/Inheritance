@@ -9,10 +9,40 @@ int main()
 
 
 	LitFactory factory;
-	std::string str = "title:Quantum mechanics\nnumber:7\nyear:3";
-	Literature* fund = factory.fromString(str);
+	
+
+	Literature* fund = factory.fromFile("data.txt");
 	std::cout << fund->toString() << "\n";
-	delete fund;
+
+
+	if (dynamic_cast<Magazine*>(fund)) {
+
+		delete dynamic_cast<Magazine*>(fund);
+
+	}
+	else if (dynamic_cast<Booklet*>(fund)) {
+
+		delete dynamic_cast<Booklet*>(fund);
+
+	}
+	else if (dynamic_cast<Newspaper*>(fund)) {
+
+		delete dynamic_cast<Newspaper*>(fund);
+
+	}
+	else if (dynamic_cast<Journal*>(fund)) {
+
+		delete dynamic_cast<Journal*>(fund);
+
+	}
+	else if (dynamic_cast<Book*>(fund)) {
+
+		delete dynamic_cast<Book*>(fund);
+
+	}
+
+
+	
 
 
 }
