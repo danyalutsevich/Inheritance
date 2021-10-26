@@ -24,7 +24,7 @@ public:
 
 	virtual std::string toString() = 0;
 
-	~Literature() {
+	virtual ~Literature() {
 
 		std::cout << "Literature destructor " << this << "\n";
 	}

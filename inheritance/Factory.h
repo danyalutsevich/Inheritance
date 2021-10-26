@@ -2,6 +2,7 @@
 
 #include "Library.h"
 #include <fstream>
+#include <filesystem>
 
 class LitFactory {
 
@@ -124,6 +125,45 @@ public:
 		return fromString(str);
 
 	
+	}
+
+	Literature** fromDir(std::string directory) {
+
+		int litCount = 0;
+
+		for (auto const& dir : std::filesystem::directory_iterator(directory)) {
+
+			if (dir.path().extension() == ".lit") {
+				
+				litCount++;
+			}
+			
+		}
+
+		std::string* filename = new std::string[litCount];
+		Literature** funds = new Literature*[litCount];
+
+		litCount = 0;
+
+		for (auto const& dir : std::filesystem::directory_iterator(directory)) {
+
+			if (dir.path().extension() == ".lit") {
+
+				filename[litCount] = dir.path().filename().string();
+				litCount++;
+
+			}
+
+		}
+
+
+		for (int i = 0; i < litCount; i++) {
+			
+			funds[i] = fromFile(directory+"/"+filename[i]);
+
+		}
+
+		return funds;
 	}
 
 };
