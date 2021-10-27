@@ -10,22 +10,30 @@ int main()
 
 	LitFactory factory;
 
-	Literature** fund = NULL;
+	std::vector<Literature*>funds;
 
 	try {
 
 
-		fund = factory.fromDir("./literature");
-		std::cout << fund[0]->toString() << "\n";
+		funds=factory.fromDirectory("./literature");
+		for (int i = 0; i < funds.size(); i++) {
+
+			std::cout << funds[i]->toString() << "\n";
+
+		}
 
 		
 	}
-	catch (std::exception& ex) {
+	catch (const std::exception& ex) {
 		std::cout << ex.what();
 	}
 
+	for (int i = 0; i < funds.size(); i++) {
 
-	delete fund[0];
+		
+		delete funds[i];
+
+	}
 
 
 

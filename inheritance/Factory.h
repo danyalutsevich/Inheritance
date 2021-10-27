@@ -3,6 +3,7 @@
 #include "Library.h"
 #include <fstream>
 #include <filesystem>
+#include <vector>
 
 class LitFactory {
 
@@ -75,10 +76,10 @@ public:
 				return journal->SetNumber(stoi(pair2[1]))->SetTitle(pair1[1]);
 
 			}
-			if (pair2[0] == "number") {
+			if (pair2[0] == "date") {
 
-				Journal* journal = new Journal;
-				return journal->SetNumber(stoi(pair2[1]))->SetTitle(pair1[1]);
+				Newspaper* journal = new Newspaper;
+				return journal->SetDate(pair2[1])->SetTitle(pair1[1]);
 
 			}
 		}
@@ -104,7 +105,7 @@ public:
 	}
 
 	Literature* fromFile(std::string filename) {
-	
+
 		std::ifstream input;
 		input.open(filename);
 		char chunk[100];
@@ -124,7 +125,7 @@ public:
 
 		return fromString(str);
 
-	
+
 	}
 
 	Literature** fromDir(std::string directory) {
@@ -134,15 +135,14 @@ public:
 		for (auto const& dir : std::filesystem::directory_iterator(directory)) {
 
 			if (dir.path().extension() == ".lit") {
-				
+
 				litCount++;
 			}
-			
+
 		}
 
 		std::string* filename = new std::string[litCount];
-		Literature** funds = new Literature*[litCount];
-
+		Literature** funds = new Literature * [litCount];
 		litCount = 0;
 
 		for (auto const& dir : std::filesystem::directory_iterator(directory)) {
@@ -158,8 +158,35 @@ public:
 
 
 		for (int i = 0; i < litCount; i++) {
+
+			funds[i] = fromFile(directory + "/" + filename[i]);
+
+		}
+
+		return funds;
+	}
+
+	std::vector<Literature*> fromDirectory(std::string directory) {
+
+		namespace fs = std::filesystem;
+
+		std::vector<Literature*>funds;
+
+		for (fs::directory_entry const& dir : fs::directory_iterator(directory)) {
 			
-			funds[i] = fromFile(directory+"/"+filename[i]);
+			if (dir.is_regular_file()) {
+
+				if (dir.path().extension() == ".lit") {
+
+					Literature* fund = fromFile(dir.path().string());
+					if (fund) {
+
+						funds.push_back(fund);
+					
+					}
+
+				}
+			}
 
 		}
 
